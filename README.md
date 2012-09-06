@@ -6,9 +6,10 @@ Logs
 
 --- 
 
-- `2012-09-02` : Init Repo named c-example
-- `2012-09-03` : Add an interesting use define define_use.c
 
+- `2012-09-06` : Add printf use : base/printf.c
+- `2012-09-03` : Add an interesting use define interesting/define_use.c
+- `2012-09-02` : Init Repo named c-example
 
 
 ----------
