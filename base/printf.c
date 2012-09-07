@@ -10,6 +10,8 @@ int main()
     printf("int value is %i\n",a);
     printf("float value is %.2f\n",b);
     printf("double value is %.5f\n",c);
+    printf("show 11e2:%e\n",10e2);
+    printf("auto select :%g\n",10e2);
     // printf("boolean value is %d", d);
 }
 
