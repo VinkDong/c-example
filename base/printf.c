@@ -5,6 +5,7 @@ int main()
     int a = 100;
     float b = 10.1;
     double c = 10.23;
+    short int f = 100 ;
     // bool d  = false;  c has no bool type 
     printf("int value is %d\n",a);
     printf("int value is %i\n",a);
@@ -13,5 +14,7 @@ int main()
     printf("show 11e2:%e\n",10e2);
     printf("auto select :%g\n",10e2);
     // printf("boolean value is %d", d);
+    printf("show long int just use %%ld, %ld\n",101l);
+    printf("show short int just use %%hd, %hd\n",f);
 }
 
