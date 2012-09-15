@@ -6,6 +6,7 @@ Logs
 
 --- 
 
+- `2012-09-15` : Add struct use base/struct.c
 - `2012-09-13` : Add array use base/array.c
 - `2012-09-11` : Add condition `a?b:c` use base/condition.c
 - `2012-09-10` : Add calculate use : base/calculate.c `and` long short use : base/int.c
