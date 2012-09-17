@@ -6,6 +6,7 @@ Logs
 
 --- 
 
+- `2012-09-17` : Add const use base/const.c
 - `2012-09-16` : Add char use base/char.c
 - `2012-09-15` : Add struct use base/struct.c
 - `2012-09-13` : Add array use base/array.c
