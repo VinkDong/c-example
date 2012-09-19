@@ -2,7 +2,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-char* search_in_addr(char* s,int len,char *d)
+char* search_in_addr(char* s,int len, char *d)
 {
     int i,j,count; 
     char * tmp;
@@ -32,6 +32,50 @@ char* search_in_addr(char* s,int len,char *d)
     return tmp;
 }
  
+char * copy_value_from_address(char *src,int len)
+{
+    char *new = calloc(len,sizeof *src);
+    memcpy(new,src,len);
+    return new;
+}
+
+char * insert_value_to_address(char *src,int src_len,char *location,int location_len,char *dest,int dest_len)
+{
+    char * insert_position = search_in_addr(src,src_len,location);
+    if(insert_position == NULL) return NULL;
+    int header_len = insert_position- src;
+    int end_len = src_len - header_len - location_len;
+    char *end_chars = copy_value_from_address(insert_position+location_len,end_len);
+    
+    int i;
+    printf("func `insert_value_to_address`\n");
+   
+    // todo :to delete -->>
+    for(i=0;i<end_len;i++)
+    {
+        printf("%c",*end_chars++);
+    }
+    end_chars -= end_len;
+    // --<< to delete 
+    
+    char *new_char = calloc(src_len+dest_len,sizeof *src);
+
+    memcpy(new_char,src,header_len+location_len);
+    char * curr = new_char+header_len+location_len;
+    memcpy(curr,dest,dest_len);
+    curr = curr + dest_len;
+    memcpy(curr,insert_position+location_len,end_len);
+   
+    /*
+    be careful print ,it can make error return;
+    printf("\n");
+    for(i=0; i<src_len+dest_len;i++)
+    {
+        printf("%c",*new_char++);
+    }
+    */   
+    return new_char;
+}
 
 int main()
 {
@@ -40,17 +84,23 @@ int main()
      
     char q[] = "this is a string and we will insert value";
     
-    char fd[] = "insert";
+    char fd[] = "insert ";
     memcpy(p,q,43);
     int i;
-    for(i=0;i<100;i++){
-        printf("%c",*p++); 
-    }
-
-    p-= 100;
 
     char *insert_p = search_in_addr(p,40,fd);
     
-    printf("%c",*insert_p);  
+    printf("%c\n",*insert_p);
+   
+    char *newstr =  copy_value_from_address(insert_p+7,7);
+    
+    for(i=0;i<9;i++){
+        printf("%c",*newstr);
+        newstr++;
+    }
+     
+    char ind[] = "opened";
+    insert_value_to_address(p,43,fd,7,ind,6);
+
 }
 
