@@ -39,7 +39,7 @@ char * copy_value_from_address(char *src,int len)
     return new;
 }
 
-char * insert_value_to_address(char *src,int src_len,char *location,int location_len,char *dest,int dest_len)
+char * insert_value_to_address(char *src,int src_len,char *location,int location_len,char *dest,int dest_len,int insert_before)
 {
     char * insert_position = search_in_addr(src,src_len,location);
     if(insert_position == NULL) return NULL;
@@ -59,13 +59,21 @@ char * insert_value_to_address(char *src,int src_len,char *location,int location
     // --<< to delete 
     
     char *new_char = calloc(src_len+dest_len,sizeof *src);
-
-    memcpy(new_char,src,header_len+location_len);
-    char * curr = new_char+header_len+location_len;
-    memcpy(curr,dest,dest_len);
-    curr = curr + dest_len;
-    memcpy(curr,insert_position+location_len,end_len);
    
+    if(insert_before)
+    {
+        memcpy(new_char,src,header_len);
+        char * curr = new_char+header_len;
+        memcpy(curr,dest,dest_len);
+        curr = curr + dest_len;
+        memcpy(curr,insert_position,end_len+location_len); 
+    }else{
+        memcpy(new_char,src,header_len+location_len);
+        char * curr = new_char+header_len+location_len;
+        memcpy(curr,dest,dest_len);
+        curr = curr + dest_len;
+        memcpy(curr,insert_position+location_len,end_len);
+    }
     /*
     be careful print ,it can make error return;
     printf("\n");
@@ -100,7 +108,5 @@ int main()
     }
      
     char ind[] = "opened";
-    insert_value_to_address(p,43,fd,7,ind,6);
-
+    insert_value_to_address(p,43,fd,7,ind,6,1);
 }
-
