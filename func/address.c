@@ -39,7 +39,20 @@ char * copy_value_from_address(char *src,int len)
     return new;
 }
 
-char * insert_value_to_address(char *src,int src_len,char *location,int location_len,char *dest,int dest_len,int insert_before)
+char * delete_from_address(char *src,int src_len,char *dest,int dest_len)
+{
+    char * delete_position = search_in_addr(src,src_len,dest);
+    if(delete_position == NULL) return NULL;
+    int header_len = delete_position - src;
+    int end_len = src_len - header_len - dest_len;
+     
+    char * new_char = calloc(delete_position-src, sizeof * src);
+    memcpy(new_char,src,header_len);
+    memcpy(new_char+header_len,delete_position+dest_len,end_len);
+    return new_char;   
+}
+
+char * insert_to_address(char *src,int src_len,char *location,int location_len,char *dest,int dest_len,int insert_before)
 {
     char * insert_position = search_in_addr(src,src_len,location);
     if(insert_position == NULL) return NULL;
@@ -108,5 +121,9 @@ int main()
     }
      
     char ind[] = "opened";
-    insert_value_to_address(p,43,fd,7,ind,6,1);
+    insert_to_address(p,43,fd,7,ind,6,1);
+    char ded[] = "and ";
+    char *new_char = delete_from_address(p,43,ded,4);
+    
+    
 }
