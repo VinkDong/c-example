@@ -6,7 +6,8 @@ Logs
 
 --- 
 
-- `2012-09-22` : Add `#ifdef .. endif` method at config/config_block.c.c
+- `2012-09-23` : Add `signal ` use at system/signal_use.c
+- `2012-09-22` : Add `#ifdef .. endif` method at config/config_block.c
 - `2012-09-21` : Add `address remove string` method at funt/address.c
 - `2012-09-19` : Add `address insert string` method at funt/address.c
 - `2012-09-18` : Add `address find string` method at funt/address.c
