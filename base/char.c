@@ -1,4 +1,11 @@
 # include<stdio.h>
+# include<string.h>
+char * find_first(char * data,char x)
+{
+    char * p = strchr(data,x);
+    printf("find :%c\n",*(p+3));
+    return p;
+}
 
 int main()
 {
@@ -48,5 +55,11 @@ int main()
     }
     //because word5 contain \0  so it end by abc\0 ;
     printf("%s\n",word4);
+    
+    printf("find str by strchr\n");
+    
+    char data[] = "i think this is a very useful good";
+    p = find_first(data,'a');
+    printf("find char a at locaton %ld\n",p-data);
 }
 

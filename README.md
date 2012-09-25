@@ -6,6 +6,8 @@ Logs
 
 --- 
 
+- `2012-09-25` : Add `goto ` use at base/condition.c
+- `2012-09-24` : Add `strchr`find char at string use at base/char.c
 - `2012-09-23` : Add `signal ` use at system/signal_use.c
 - `2012-09-22` : Add `#ifdef .. endif` method at config/config_block.c
 - `2012-09-21` : Add `address remove string` method at funt/address.c
