@@ -7,6 +7,7 @@ char * find_first(char * data,char x)
     return p;
 }
 
+
 int main()
 {
     char name[3] = {'h','i','o'};
@@ -61,5 +62,19 @@ int main()
     char data[] = "i think this is a very useful good";
     p = find_first(data,'a');
     printf("find char a at locaton %ld\n",p-data);
+    printf("check str equal\n");
+       
+    char a[] = "me";
+    char b[] = "your";
+    char c[] = "your";
+    if(strcmp(a,b)!=0){
+        printf("a not is equal b\n"); 
+    }
+    if(strcmp(b,c)==0){
+        printf("b is equal c\n"); 
+    }
+    int cmp = strcmp(a,b);
+    printf("stcmp len %d\n",cmp);
+ 
 }
 
